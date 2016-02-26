@@ -157,7 +157,7 @@ HeartbeatMapper Java文件是这么定义的，其中`RowBounds`中定义分页�
 	List<HeartbeatEntity> getAll(RowBounds rb);
 	
 #### 物理分页
-理分页指的是在SQL查询过程中实现分页，依托与不同的数据库厂商，实现也会不同。zebra-dao扩展了一个拦截器，实现了改写SQL达到了物理分页的功能。下面举例说明如何使用：
+物理分页指的是在SQL查询过程中实现分页，依托与不同的数据库厂商，实现也会不同。zebra-dao扩展了一个拦截器，实现了改写SQL达到了物理分页的功能。下面举例说明如何使用：
 
 在Spring的配置中修改sqlSessionFactory，添加configLocation
 
