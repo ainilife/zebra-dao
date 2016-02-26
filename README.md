@@ -1,10 +1,11 @@
 # zebra-dao
 
 ## 简介
-`zebra-dao`是在`mybatis`基础上进一步封装的`异步数据源`,它是在要求服务全异步化的背景下产生的。目前，已有多个业务接入使用，并在线上环境接受了大并发的考验。
-它有以下的功能点：
+`zebra-dao`是在`mybatis`基础上进一步封装的`异步数据源`,它的产生背景是公司要求服务完全异步化，一个服务可能包括RPC调用请求、MemCached请求、KV存储请求以及MySQL数据库调用，目前其它三种请求的组件都有异步化的接口，但是数据库调用并没有。所以，在这个情况下，开发了这个异步化的DAO。目前，大众点评内部已有多个业务接入使用，已经接受了线上环境的验证和考验。
 
-1. 实现`回调`和`Future`两种方式的异步dao
+具体来说，它有以下的功能点：
+
+1. 实现`回调`和`Future`两种方式的异步化dao
 2. 在mybatis基础上支持分页功能
 3. 使用方式和mybatis一致，有关mybati的使用问题请参考文档https://mybatis.github.io/mybatis-3/zh/
 
@@ -15,18 +16,6 @@
 		<groupId>com.dianping.zebra</groupId>
 		<artifactId>zebra-dao</artifactId>
 		<version>0.1.5</version>
-	</dependency>
-
-	<!--Spring 相关依赖，请指定版本-->
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-context</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-jdbc</artifactId>
-		<version>${spring.version}</version>
 	</dependency>
 
 在spring的appcontext-dao.xml文件中配置一个如下的bean。因为zebra-dao背后异步的实现方式，是使用线程池执行的方式的，所以需要在这里设置线程池的大小。该部分配置与原生的mybatis有差异，也是唯一差异的地方。
