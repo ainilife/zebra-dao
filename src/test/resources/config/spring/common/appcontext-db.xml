@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<bean id="zebraDataSource" class="com.dianping.zebra.group.jdbc.GroupDataSource"
+		init-method="init">
+		<property name="jdbcRef" value="zebra" />
+		<property name="poolType" value="tomcat-jdbc" />
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="maxIdleTime" value="1800" />
+		<property name="idleConnectionTestPeriod" value="60" />
+		<property name="acquireRetryAttempts" value="3" />
+		<property name="acquireRetryDelay" value="300" />
+		<property name="maxStatements" value="0" />
+		<property name="maxStatementsPerConnection" value="100" />
+		<property name="numHelperThreads" value="6" />
+		<property name="maxAdministrativeTaskTime" value="5" />
+		<property name="preferredTestQuery" value="SELECT 1" />
+		<property name="checkoutTimeout" value="1000" />
+	</bean>
+
+	<bean id="zebraSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="zebraDataSource" />
+		<property name="mapperLocations" value="classpath*:config/sqlmap/**/*.xml" />
+		<property name="typeAliasesPackage" value="com.dianping.zebra.dao.entity" />
+		<property name="configLocation" value="classpath:config/mybatis/mybatis-configuration.xml" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="zebraDataSource" />
+	</bean>
+</beans>
