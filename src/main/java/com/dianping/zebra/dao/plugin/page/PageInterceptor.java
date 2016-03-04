@@ -67,21 +67,31 @@ public class PageInterceptor implements Interceptor {
 		MappedStatement ms = (MappedStatement) args[0];
 
 		if (rowBound != null) {
-			BoundSql boundSql = ms.getBoundSql(args);
+			RowBounds rb = (RowBounds) rowBound;
 
-			if (rowBound instanceof PageModel) {
-				PageModel pageModel = (PageModel) rowBound;
-				Object count = queryCount(invocation, args, ms, boundSql);
-				Object records = queryLimit(invocation, args, ms, boundSql, pageModel);
-
-				pageModel.setRecordCount((Integer) ((List<?>) count).get(0));
-				pageModel.setRecords((List<?>) records);
-
-				return null;
+			// without pagination
+			if (rb.getOffset() == RowBounds.NO_ROW_OFFSET && rb.getLimit() == RowBounds.NO_ROW_LIMIT) {
+				return invocation.proceed();
 			} else {
-				return queryLimit(invocation, args, ms, boundSql, (RowBounds) rowBound);
+				BoundSql boundSql = ms.getBoundSql(args);
+
+				if (rowBound instanceof PageModel) {
+					// physical pagination with PageModel
+					PageModel pageModel = (PageModel) rowBound;
+					Object count = queryCount(invocation, args, ms, boundSql);
+					Object records = queryLimit(invocation, args, ms, boundSql, pageModel);
+
+					pageModel.setRecordCount((Integer) ((List<?>) count).get(0));
+					pageModel.setRecords((List<?>) records);
+
+					return null;
+				} else {
+					// physical pagination with RowBounds
+					return queryLimit(invocation, args, ms, boundSql, (RowBounds) rowBound);
+				}
 			}
 		} else {
+			// without pagination
 			return invocation.proceed();
 		}
 	}
