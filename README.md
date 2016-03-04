@@ -2,6 +2,8 @@
 
 [Readme in Chinese](README-zh.md)
 
+[![Build Status](https://travis-ci.org/ainilife/zebra-dao.svg?branch=master)](https://travis-ci.org/ainilife/zebra-dao)
+
 ## Introduction
 `zebra-dao` is an `asynchronous` dao built on top of `mybatis` and `mybatis-spring`，it also supports `page` feature. Now, DianPing corp intenal has already using this dao on the product environment。
 
