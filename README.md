@@ -1,6 +1,6 @@
 # zebra-dao:An asynchronous and paged dao 
 
-[Readme in Chinese](README-zh.md)
+[Readme in Chinese](https://github.com/ainilife/zebra-dao/blob/master/README_ZH.md)
 
 [![Build Status](https://travis-ci.org/ainilife/zebra-dao.svg?branch=master)](https://travis-ci.org/ainilife/zebra-dao)
 
