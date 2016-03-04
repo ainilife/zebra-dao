@@ -1,5 +1,7 @@
 # zebra-dao:An asynchronous and paged dao 
 
+[Readme in Chinese](README-zh.md)
+
 ## Introduction
 `zebra-dao` is an `asynchronous` dao built on top of `mybatis` and `mybatis-spring`，it also supports `page` feature. Now, DianPing corp intenal has already using this dao on the product environment。
 
@@ -214,10 +216,6 @@ In `HeartbeatMapper.java`, `PageModel` can define both `page` and `pageSize`. Af
 		public void onException(Exception e) {
 		}
 	});
-
-##Other language version
-
-[简体中文](README_ZH.md)
 
 
 
