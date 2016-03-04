@@ -1,4 +1,4 @@
-# zebra-dao:An asynchronous and paged dao 
+# zebra-dao:An asynchronous and paginated dao 
 
 [Readme in Chinese](https://github.com/ainilife/zebra-dao/blob/master/README_ZH.md)
 
