@@ -209,7 +209,7 @@ In `HeartbeatMapper.java`, `PageModel` can define both `page` and `pageSize`. Af
 	dao.getAll(model, new AsyncDaoCallback<PageModel>() {
 		@Override
 		public void onSuccess(PageModel pageModel) {
-			//pageModel为null，real result is in the model
+			//pageModel is null，real result is in the `model`
 			System.out.println(model.getRecordCount());
 			System.out.println(model.getRecords().size());
 		}
