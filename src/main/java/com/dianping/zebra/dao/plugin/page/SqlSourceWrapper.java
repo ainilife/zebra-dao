@@ -8,10 +8,10 @@ import org.apache.ibatis.mapping.SqlSource;
  * @author damonzhu
  *
  */
-public class SqlSqlSourceWrapper implements SqlSource {
+public class SqlSourceWrapper implements SqlSource {
 	private BoundSql boundSql;
 
-	public SqlSqlSourceWrapper(BoundSql boundSql) {
+	public SqlSourceWrapper(BoundSql boundSql) {
 		this.boundSql = boundSql;
 	}
 

@@ -110,7 +110,7 @@ public class PageInterceptor implements Interceptor {
 			ResultMap resultMap = new ResultMap.Builder(ms.getConfiguration(), ms.getId(), int.class,
 					EMPTY_RESULTMAPPING).build();
 			resultMaps.add(resultMap);
-			countRowStatement = buildMappedStatement(ms, new SqlSqlSourceWrapper(newBoundSql), ms.getId() + "_COUNT",
+			countRowStatement = buildMappedStatement(ms, new SqlSourceWrapper(newBoundSql), ms.getId() + "_COUNT",
 					resultMaps);
 		}
 
@@ -129,7 +129,7 @@ public class PageInterceptor implements Interceptor {
 		MetaObject mo = (MetaObject) ReflectionUtils.getFieldValue(boundSql, "metaParameters");
 		ReflectionUtils.setFieldValue(newBoundSql, "metaParameters", mo);
 
-		args[0] = buildMappedStatement(ms, new SqlSqlSourceWrapper(newBoundSql), ms.getId() + "_LIMIT",
+		args[0] = buildMappedStatement(ms, new SqlSourceWrapper(newBoundSql), ms.getId() + "_LIMIT",
 				ms.getResultMaps());
 		args[2] = new RowBounds();
 		args[3] = null;
