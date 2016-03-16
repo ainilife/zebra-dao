@@ -82,7 +82,19 @@ public class AsyncMapperProxy<T> implements InvocationHandler, Serializable {
 
 			for (Method _method : methods) {
 				if (_method.getName().equalsIgnoreCase(targetMethod.name())) {
-					return _method;
+					Class<?>[] parameterTypes = _method.getParameterTypes();
+
+					boolean isCallableMethod = false;
+					for (Class<?> parameterType : parameterTypes) {
+						if (AsyncDaoCallback.class.isAssignableFrom(parameterType)) {
+							isCallableMethod = true;
+							break;
+						}
+					}
+
+					if (!isCallableMethod) {
+						return _method;
+					}
 				}
 			}
 		}
