@@ -1,5 +1,7 @@
 # zebra-dao: An asynchronous and paginated dao
 
+该项目的主repo已转移到 [Dianping仓库](https://github.com/dianping/zebra)
+
 ## 简介
 `zebra-dao`是在`mybatis`基础上进一步封装的`异步数据源`,同时它也支持分页功能。它的产生背景是公司要求服务完全异步化，一个服务可能包括RPC调用请求、MemCached请求、KV存储请求以及MySQL数据库调用，目前其它三种请求的组件都有异步化的接口，但是数据库调用并没有。所以，在这个情况下，开发了这个异步化的DAO。目前，大众点评内部已有多个业务接入使用，已经接受了线上环境的验证和考验。
 
