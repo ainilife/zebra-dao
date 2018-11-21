@@ -2,7 +2,7 @@
 
 [Readme in Chinese](https://github.com/ainilife/zebra-dao/blob/master/README_ZH.md)
 
-该项目的主repo已转移到 [Dianping仓库](https://github.com/dianping/zebra)
+该项目的主repo已转移到 [Meituan-Dianping仓库](https://github.com/dianping/zebra)
 
 [![Build Status](https://travis-ci.org/ainilife/zebra-dao.svg?branch=master)](https://travis-ci.org/ainilife/zebra-dao)
 
